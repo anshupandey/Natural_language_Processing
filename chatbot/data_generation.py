@@ -29,3 +29,10 @@ while True:
         
 
 
+file = open("data\Qus_data.txt","w")
+file.write(str(qus_data))
+file.close()
+
+file = open("data\Ans_data.txt","w")
+file.write(str(ans_data))
+file.close()
