@@ -27,8 +27,6 @@ while True:
             break
         ans_data[intent].append(ans)
         
-
-
 file = open("data\Qus_data.txt","w")
 file.write(str(qus_data))
 file.close()
