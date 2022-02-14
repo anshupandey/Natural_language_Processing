@@ -8,7 +8,8 @@ Created on Fri Feb  7 00:24:19 2020
 #Loading intent Recognizer
 
 from tensorflow.keras import models
-
+import spacy
+nlp = spacy.load("en_core_web_sm")
 model = models.load_model("intent_recognizer.h5")
 
 # loading tokenizer
@@ -39,9 +40,11 @@ while True:
     if qus=='exit':
         print("Thank you for your time, Have a good day!")
         break
+    qus = nlp(qus)
+    qus = " ".join([w.lemma_ for w in qus])
     seq = tok.texts_to_sequences([qus])
     seq = pad_sequences(seq,maxlen=MAX_SEQUENCE_LENGTH)
-    ans = model.predict_classes(seq)[0]
+    ans = model.predict(seq).argmax()
     print(ans)
     current_intent = intents[ans]
     print("recognized Intent is ",current_intent)
