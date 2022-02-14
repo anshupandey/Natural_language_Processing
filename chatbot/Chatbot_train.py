@@ -46,7 +46,7 @@ y = np.array(y)
 ##########################################################################
 ### Training intent recognition model
         
-MAX_SEQUENCE_LENGTH = round((sum(doc_size)/len(doc_size) + max(doc_size))/2)+1
+MAX_SEQUENCE_LENGTH = round((sum(doc_size)/len(doc_size) + max(doc_size))/1.5)+4
 MAX_WORDS = 500
 EMBEDDING_DIM = 30
 
